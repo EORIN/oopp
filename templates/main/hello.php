@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мой бло2г</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Мой б1лог</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
@@ -15,11 +15,7 @@
     </tr>
     <tr>
         <td>
-            <?php foreach ($articles as $article): ?>
-                <h2><?= $article['name'] ?></h2>
-                <p><?= $article['text'] ?></p>
-                <hr>
-            <?php endforeach; ?>
+            Привет, <?= $name ?>!!!
         </td>
 
         <td width="300px" class="sidebar">
