@@ -33,4 +33,8 @@ class ArticlesController
 
         $this->view->renderHtml('articles/view.php', ['article' => $result[0]]);
     }
+
+    public function one(){
+
+    }
 }

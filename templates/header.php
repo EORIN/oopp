@@ -12,7 +12,10 @@
 <table class="layout" >
     <tr>
         <td colspan="2" class="header">
-            Мой блог
+            <ul style="list-style-type: none; flex-direction: row; display: flex; justify-content: space-between">
+                <li>Мой блог</li>
+                <li>Создать</li>
+            </ul>
         </td>
     </tr>
     <tr>
