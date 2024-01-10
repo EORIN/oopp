@@ -2,40 +2,71 @@
 
 namespace MyProject\Models\Articles;
 
-use MyProject\Models\Users\User;
+use MyProject\Services\Db;
 
 class Article
 {
-    private $title;
-    private $text;
-    private $author;
+    /** @var int */
     private $id;
 
-    public function __construct(string $title, string $text, User $author, $id)
+    /** @var string */
+    private $name;
+
+    /** @var string */
+    private $text;
+
+    /** @var string */
+    private $authorId;
+
+    /** @var string */
+    private $createdAt;
+
+    public function __set($name, $value)
     {
-        $this->title = $title;
-        $this->text = $text;
-        $this->author = $author;
-        $this->id = $id;
+        $camelCaseName = $this->underscoreToCamelCase($name);
+        $this->$camelCaseName = $value;
     }
 
-    public function getTitle(): string
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return $this->title;
+        return $this->id;
     }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
     public function getText(): string
     {
         return $this->text;
     }
 
-    public function getAuthor(): User
+    /**
+     * @return Article[]
+     */
+    public static function findAll(): array
     {
-        return $this->author;
+        $db = new Db();
+        return $db->query('SELECT * FROM `' . static::getTableName() . '`;', [], static::class);
     }
 
-    public function getId()
+    private static function getTableName(): string
     {
-        return $this->id;
+        return 'articles';
+    }   
+
+    private function underscoreToCamelCase(string $source): string
+    {
+        return lcfirst(str_replace('_', '', ucwords($source, '_')));
     }
 }

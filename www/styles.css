@@ -6,7 +6,9 @@
     border-collapse: collapse;
 }
 
-
+body{
+    background: black;
+}
 .layout tr td {
     padding: 20px;
     vertical-align: top;
