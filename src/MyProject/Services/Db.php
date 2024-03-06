@@ -19,6 +19,11 @@ class Db
         $this->pdo->exec('SET NAMES UTF8');
     }
 
+    public function add($name, $text){
+        var_dump(1);
+        $this->pdo->query("INSERT INTO 'articles' ('name' , 'text') VALUES ('g', 'ggg')");
+    }
+
     public function query(string $sql, $params = []): ?array
     {
         $sth = $this->pdo->prepare($sql);
