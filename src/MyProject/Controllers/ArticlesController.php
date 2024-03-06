@@ -19,19 +19,22 @@ class ArticlesController
         $this->db = new Db();
     }
 
-    public function view(int $articleId)
+    public function add(): void
     {
-        $result = $this->db->query(
-            'SELECT * FROM `articles` WHERE id = :id;',
-            [':id' => $articleId]
-        );
+        $this->view->renderHtml('articles/add.php');
+    }
 
-        if ($result === []) {
-            $this->view->renderHtml('errors/404.php');
-            return;
+    public function view(int $articleId): void
+    {
+        $article = Article::getById($articleId);
+
+        if ($article === null) {
+            throw new NotFoundException();
         }
 
-        $this->view->renderHtml('articles/view.php', ['article' => $result[0]]);
+        $this->view->renderHtml('articles/view.php', [
+            'article' => $article
+        ]);
     }
 
     public function one(){

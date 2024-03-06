@@ -13,7 +13,7 @@
         <td colspan="2" class="header">
             <ul style="list-style-type: none; flex-direction: row; display: flex; justify-content: space-between">
                 <li>Мой блог</li>
-                <li>Создать</li>
+                <li><a href=""></a></li>
             </ul>
         </td>
     </tr>
